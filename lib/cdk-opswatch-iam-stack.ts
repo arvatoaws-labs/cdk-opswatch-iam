@@ -54,7 +54,7 @@ export class CdkOpswatchIamStack extends Stack {
               'acm:DescribeCertificate',
               'cloudfront:GetDistribution',
               'route53:GetHealthCheck',
-              'efs:DescribeFileSystems',
+              'elasticfilesystem:DescribeFileSystems',
               'ec2:DescribeVolumes',
               'ec2:DescribeInstances',
               'ec2:DescribeInstanceCreditSpecifications',
