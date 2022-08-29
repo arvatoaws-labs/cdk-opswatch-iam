@@ -65,8 +65,13 @@ export class CdkOpswatchIamStack extends Stack {
               'rds:DescribeDBClusters',
               'rds:DescribeDBClusterParameters',
               'rds:DescribeDBParameters',
+              'elasticache:DescribeCacheClusters',
+              'elasticache:DescribeCacheEngineVersions',
+              'elasticache:DescribeReplicationGroups',
+              'elasticache:DescribeUpdateActions',
               'es:DescribeElasticsearchDomain',
-              'es:ListElasticsearchVersions'
+              'es:ListElasticsearchVersions',
+              'rds:DescribeDBEngineVersions'
             ],
             Resource: '*'
           }]
