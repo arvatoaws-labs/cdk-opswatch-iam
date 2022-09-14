@@ -71,7 +71,8 @@ export class CdkOpswatchIamStack extends Stack {
               'elasticache:DescribeUpdateActions',
               'es:DescribeElasticsearchDomain',
               'es:ListElasticsearchVersions',
-              'rds:DescribeDBEngineVersions'
+              'rds:DescribeDBEngineVersions',
+              'lambda:GetFunctionConfiguration'
             ],
             Resource: '*'
           }]
