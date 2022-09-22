@@ -72,7 +72,14 @@ export class CdkOpswatchIamStack extends Stack {
               'es:DescribeElasticsearchDomain',
               'es:ListElasticsearchVersions',
               'rds:DescribeDBEngineVersions',
-              'lambda:GetFunctionConfiguration'
+              'lambda:GetFunctionConfiguration',
+              "eks:DescribeCluster",
+              "eks:DescribeAddonVersions",
+              "eks:ListAddons",
+              "eks:DescribeAddon",
+              "eks:ListNodegroups",
+              "eks:DescribeNodegroup",
+              "ssm:GetParameter"
             ],
             Resource: '*'
           }]
