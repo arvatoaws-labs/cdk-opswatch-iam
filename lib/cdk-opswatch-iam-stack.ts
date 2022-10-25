@@ -79,7 +79,9 @@ export class CdkOpswatchIamStack extends Stack {
               "eks:DescribeAddon",
               "eks:ListNodegroups",
               "eks:DescribeNodegroup",
-              "ssm:GetParameter"
+              "ssm:GetParameter",
+              "ssm:DescribeParamters",
+              "ec2:DescribeImages"
             ],
             Resource: '*'
           }]
