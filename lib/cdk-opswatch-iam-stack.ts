@@ -87,7 +87,9 @@ export class CdkOpswatchIamStack extends Stack {
               "elasticloadbalancing:DescribeTargetGroups",
               "elasticloadbalancing:DescribeListeners",
               "mq:DescribeBrokerEngineTypes",
-              "mq:DescribeBroker"
+              "mq:DescribeBroker",
+              "ssm:DescribeInstanceInformation",
+              "backup:ListBackupJobs"
             ],
             Resource: '*'
           }]
