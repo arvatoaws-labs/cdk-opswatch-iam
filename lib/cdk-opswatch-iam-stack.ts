@@ -89,7 +89,8 @@ export class CdkOpswatchIamStack extends Stack {
               "mq:DescribeBrokerEngineTypes",
               "mq:DescribeBroker",
               "ssm:DescribeInstanceInformation",
-              "backup:ListBackupJobs"
+              "backup:ListBackupJobs",
+              "backup:GetBackupPlan"
             ],
             Resource: '*'
           }]
