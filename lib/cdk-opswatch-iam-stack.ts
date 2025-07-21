@@ -83,6 +83,7 @@ export class CdkOpswatchIamStack extends Stack {
               "ssm:GetParameter",
               "ssm:DescribeParameters",
               "ec2:DescribeImages",
+              "ec2:DescribeSubnets",
               "ssm:DescribeInstancePatchStates",
               "elasticloadbalancing:DescribeLoadBalancers",
               "elasticloadbalancing:DescribeTargetGroups",
