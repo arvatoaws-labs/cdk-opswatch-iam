@@ -14,91 +14,100 @@ export class CdkOpswatchIamStack extends Stack {
       roleName: 'OpswatchRole',
       assumeRolePolicyDocument: {
         Version: '2012-10-17',
-        Statement: [{
-          Effect: 'Allow',
-          Principal: {
-            AWS: param_principal.valueAsString
+        Statement: [
+          {
+            Effect: 'Allow',
+            Principal: {
+              AWS: param_principal.valueAsString,
+            },
+            Action: 'sts:AssumeRole',
           },
-          Action: 'sts:AssumeRole'
-        }]
+        ],
       },
-      policies: [{
-        policyName: 'TagsPolicy',
-        policyDocument: {
-          Version: '2012-10-17',
-          Statement: [{
-            Sid: 'GenericTagApi',
-            Effect: 'Allow',
-            Action: [
-              'tag:GetResources'
+      policies: [
+        {
+          policyName: 'TagsPolicy',
+          policyDocument: {
+            Version: '2012-10-17',
+            Statement: [
+              {
+                Sid: 'GenericTagApi',
+                Effect: 'Allow',
+                Action: ['tag:GetResources'],
+                Resource: '*',
+              },
+              {
+                Sid: 'CustomTagApis',
+                Effect: 'Allow',
+                Action: ['cloudfront:ListTagsForResource', 'route53:ListTagsForResource', 'ec2:DescribeTags'],
+                Resource: '*',
+              },
             ],
-            Resource: '*'
-          }, {
-            Sid: 'CustomTagApis',
-            Effect: 'Allow',
-            Action: [
-              'cloudfront:ListTagsForResource',
-              'route53:ListTagsForResource',
-              'ec2:DescribeTags',
+          },
+        },
+        {
+          policyName: 'DescribePolicy',
+          policyDocument: {
+            Version: '2012-10-17',
+            Statement: [
+              {
+                Effect: 'Allow',
+                Action: [
+                  'acm:DescribeCertificate',
+                  'cloudfront:GetDistribution',
+                  'route53:GetHealthCheck',
+                  'elasticfilesystem:DescribeFileSystems',
+                  'ec2:DescribeVolumes',
+                  'ec2:DescribeInstances',
+                  'ec2:DescribeInstanceCreditSpecifications',
+                  'dynamodb:DescribeTable',
+                  'sqs:GetQueueAttributes',
+                  'rds:DescribeDBInstances',
+                  'ec2:DescribeInstanceTypes',
+                  'rds:DescribeDBClusters',
+                  'rds:DescribeDBClusterParameters',
+                  'rds:DescribeDBParameters',
+                  'rds:DescribeDBShardGroups',
+                  'elasticache:DescribeCacheClusters',
+                  'elasticache:DescribeCacheEngineVersions',
+                  'elasticache:DescribeReplicationGroups',
+                  'elasticache:DescribeUpdateActions',
+                  'es:DescribeElasticsearchDomain',
+                  'es:ListElasticsearchVersions',
+                  'rds:DescribeDBEngineVersions',
+                  'lambda:GetFunctionConfiguration',
+                  'eks:DescribeCluster',
+                  'eks:DescribeAddonVersions',
+                  'eks:ListAddons',
+                  'eks:DescribeAddon',
+                  'eks:ListNodegroups',
+                  'eks:DescribeNodegroup',
+                  'ssm:GetParameter',
+                  'ssm:DescribeParameters',
+                  'ec2:DescribeImages',
+                  'ec2:DescribeSubnets',
+                  'ssm:DescribeInstancePatchStates',
+                  'elasticloadbalancing:DescribeLoadBalancers',
+                  'elasticloadbalancing:DescribeTargetGroups',
+                  'elasticloadbalancing:DescribeListeners',
+                  'elasticloadbalancing:DescribeSSLPolicies',
+                  'mq:DescribeBrokerEngineTypes',
+                  'mq:DescribeBroker',
+                  'ssm:DescribeInstanceInformation',
+                  'backup:ListBackupJobs',
+                  'backup:GetBackupPlan',
+                  'health:Describe*',
+                  'organizations:ListAccounts',
+                  'organizations:ListParents',
+                  'organizations:DescribeAccount',
+                  'organizations:ListDelegatedAdministrators',
+                ],
+                Resource: '*',
+              },
             ],
-            Resource: '*'
-          }]
-        }
-      }, {
-        policyName: 'DescribePolicy',
-        policyDocument: {
-          Version: '2012-10-17',
-          Statement: [{
-            Effect: 'Allow',
-            Action: [
-              'acm:DescribeCertificate',
-              'cloudfront:GetDistribution',
-              'route53:GetHealthCheck',
-              'elasticfilesystem:DescribeFileSystems',
-              'ec2:DescribeVolumes',
-              'ec2:DescribeInstances',
-              'ec2:DescribeInstanceCreditSpecifications',
-              'dynamodb:DescribeTable',
-              'sqs:GetQueueAttributes',
-              'rds:DescribeDBInstances',
-              'ec2:DescribeInstanceTypes',
-              'rds:DescribeDBClusters',
-              'rds:DescribeDBClusterParameters',
-              'rds:DescribeDBParameters',
-              'rds:DescribeDBShardGroups',
-              'elasticache:DescribeCacheClusters',
-              'elasticache:DescribeCacheEngineVersions',
-              'elasticache:DescribeReplicationGroups',
-              'elasticache:DescribeUpdateActions',
-              'es:DescribeElasticsearchDomain',
-              'es:ListElasticsearchVersions',
-              'rds:DescribeDBEngineVersions',
-              'lambda:GetFunctionConfiguration',
-              "eks:DescribeCluster",
-              "eks:DescribeAddonVersions",
-              "eks:ListAddons",
-              "eks:DescribeAddon",
-              "eks:ListNodegroups",
-              "eks:DescribeNodegroup",
-              "ssm:GetParameter",
-              "ssm:DescribeParameters",
-              "ec2:DescribeImages",
-              "ec2:DescribeSubnets",
-              "ssm:DescribeInstancePatchStates",
-              "elasticloadbalancing:DescribeLoadBalancers",
-              "elasticloadbalancing:DescribeTargetGroups",
-              "elasticloadbalancing:DescribeListeners",
-              "elasticloadbalancing:DescribeSSLPolicies",
-              "mq:DescribeBrokerEngineTypes",
-              "mq:DescribeBroker",
-              "ssm:DescribeInstanceInformation",
-              "backup:ListBackupJobs",
-              "backup:GetBackupPlan"
-            ],
-            Resource: '*'
-          }]
-        }
-      }]
+          },
+        },
+      ],
     });
   }
 }
