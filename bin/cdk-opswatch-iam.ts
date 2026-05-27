@@ -19,3 +19,14 @@ new CdkOpswatchIamStack(app, 'OpswatchIam', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+const tags = {
+  'Product ID': 'prod-gis66v5zxadfk',
+  'Status': 'Public',
+  'Delivery method': 'Professional Services',
+  'Product code': '8d3dhvaytz2l63mydmfgn9wkf',
+  'Last modified': '6. Nov. 2024',
+  'ARN': 'arn:aws:aws-marketplace:us-east-1:773355297247:AWSMarketplace/ProfessionalServicesProduct/prod-gis66v5zxadfk'
+};
+for (const [key, value] of Object.entries(tags)) {
+  cdk.Tags.of(app).add(key, value);
+}
